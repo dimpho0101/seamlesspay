@@ -1,0 +1,2 @@
+include ':app', ':seamlesspay'
+rootProject.name='Seamless Pay'

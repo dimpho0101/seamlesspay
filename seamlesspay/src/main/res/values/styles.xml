@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="TextHeading">
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:fontFamily">@font/montserrat_regular</item>
+  </style>
+
+  <style parent="TextHeading" name="TextHeading.White">
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style parent="TextHeading" name="TextSmall.Black">
+    <item name="android:textColor">@android:color/black</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style parent="TextHeading" name="TextSmall.White">
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
+</resources>

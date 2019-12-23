@@ -1,0 +1,157 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      app:cardBackgroundColor="@android:color/transparent"
+      app:cardCornerRadius="20dp"
+      app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#121212">
+
+      <TextView
+          android:id="@+id/instruction1"
+          style="@style/TextHeading"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="16dp"
+          android:text="Please tap your credit card"
+          android:textSize="18sp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+          android:id="@+id/instruction2"
+          style="@style/TextHeading"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_marginEnd="16dp"
+          android:text="on the back of the phone and hold it there for 5 seconds"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/instruction1" />
+
+      <View
+          android:id="@+id/view1"
+          android:layout_width="match_parent"
+          android:layout_height="1sp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginEnd="16dp"
+          android:background="@android:color/white"
+          app:layout_constraintTop_toBottomOf="@id/instruction2" />
+
+      <TextView
+          android:id="@+id/message"
+          style="@style/TextSmall.White"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="16dp"
+          android:text="This is an instant payment. R300.00 will be charged to your credit card"
+          android:textColor="@android:color/white"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/view1" />
+
+      <LinearLayout
+          android:id="@+id/cards"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/message">
+
+        <ImageView
+            android:id="@+id/visa"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_white_background"
+            android:padding="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/visa" />
+
+        <ImageView
+            android:id="@+id/ms"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_white_background"
+            android:padding="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mastercard" />
+
+        <ImageView
+            android:id="@+id/amex"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_white_background"
+            android:padding="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/amex" />
+
+      </LinearLayout>
+
+      <include
+          android:id="@+id/creditCardInclude"
+          layout="@layout/credit_card_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="16dp"
+          app:layout_constraintBottom_toTopOf="@id/cancelButton"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/cards" />
+
+      <androidx.cardview.widget.CardView
+          android:id="@+id/cancelButton"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_marginEnd="16dp"
+          android:layout_marginBottom="16dp"
+          app:cardBackgroundColor="@android:color/holo_red_dark"
+          app:cardCornerRadius="10dp"
+          app:cardElevation="0dp"
+          app:contentPadding="12dp"
+          app:layout_constraintBottom_toTopOf="@id/power"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            style="@style/TextHeading.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="CANCEL" />
+
+      </androidx.cardview.widget.CardView>
+
+
+      <TextView
+          style="@style/TextSmall.White"
+          android:id="@+id/power"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="16dp"
+          android:text="Powered by Seamless Pay"
+          android:textColor="@android:color/white"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </androidx.cardview.widget.CardView>
+
+</layout>

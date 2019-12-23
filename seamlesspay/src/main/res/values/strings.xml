@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">Seamless Pay</string>
+  <string name="error_msg">Error</string>
+  <string name="reading_msg">Reading Card</string>
+</resources>
