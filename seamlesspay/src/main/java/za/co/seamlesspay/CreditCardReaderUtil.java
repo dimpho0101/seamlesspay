@@ -82,8 +82,8 @@ public class CreditCardReaderUtil {
     mDisposable.dispose();
     mNFCCardReader.disableDispatch();
     mBottomSheetDialogUtil.dismiss();
-    CustomDialog customDialog = new CustomDialog(((Activity) mContext));
-    customDialog.show();
+    //CustomDialog customDialog = new CustomDialog(((Activity) mContext));
+    //customDialog.show();
   }
 
   private void showError(Throwable aThrowable) {
