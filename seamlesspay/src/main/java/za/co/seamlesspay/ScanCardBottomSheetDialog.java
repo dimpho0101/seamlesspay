@@ -14,7 +14,7 @@ import za.co.seamlesspay.databinding.BottomSheetDialogBinding;
 import za.co.seamlesspay.seamlessemv.NFCCardReader;
 import za.co.seamlesspay.seamlessemv.model.EmvCard;
 
-public class CreditCardReaderUtil {
+public class ScanCardBottomSheetDialog {
 
   private Context mContext;
 
@@ -30,7 +30,7 @@ public class CreditCardReaderUtil {
 
   BottomSheetDialogUtil mBottomSheetDialogUtil;
 
-  public CreditCardReaderUtil(Context aContext, FragmentManager aFragmentManager) {
+  public ScanCardBottomSheetDialog(Context aContext, FragmentManager aFragmentManager) {
     mContext = aContext;
     mFragmentManager = aFragmentManager;
     mNFCCardReader = new NFCCardReader((Activity) mContext);
@@ -42,7 +42,7 @@ public class CreditCardReaderUtil {
           .readCardRx2(aIntent)
           .observeOn(AndroidSchedulers.mainThread())
           .subscribe(
-              this::showCardInfo,
+              card -> showCardInfo(card),
               this::showError);
     }
   }
@@ -65,18 +65,7 @@ public class CreditCardReaderUtil {
     mBottomSheetDialogUtil.show(mFragmentManager, "");
   }
 
-
   private void showCardInfo(EmvCard card) {
-    /*String text = TextUtils.join("\n", new Object[]{
-        CardUtils.formatCardNumber(card.getCardNumber(), card.getType()),
-        DateFormat.format("M/y", card.getExpireDate()),
-        "---",
-        "Bank info (probably): ",
-        card.getAtrDescription(),
-        "---",
-        card.toString().replace(", ", ",\n")
-    });*/
-
     mBottomSheetDialogBinding.creditCardInclude.cardNumber.setText(CardUtils.formatCardNumber(card.getCardNumber(), card.getType()));
     mBottomSheetDialogBinding.creditCardInclude.expDate.setText(DateFormat.format("M/y", card.getExpireDate()));
     mDisposable.dispose();
