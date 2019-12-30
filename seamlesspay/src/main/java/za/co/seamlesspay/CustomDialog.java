@@ -7,6 +7,7 @@ import android.view.Window;
 
 import androidx.databinding.DataBindingUtil;
 import za.co.seamlesspay.databinding.CustomDialogProcessingBinding;
+import za.co.seamlesspay.util.AnimationUtil;
 
 public class CustomDialog extends Dialog {
 

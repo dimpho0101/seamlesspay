@@ -41,12 +41,26 @@ ext{
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-  implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-  implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+  // Retrofit
+  implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+  implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+  implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+  implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
+  // Rx Java
+  implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+  implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+
+  //noinspection GradleDynamicVersion
   implementation 'com.cybersource:inappsdk:+'
 
+  // GSON body parser
+  implementation 'com.google.code.gson:gson:2.8.5'
+
+  // Lottie for displaying animations
   implementation "com.airbnb.android:lottie:$lottieVersion"
+
+  // Android dependencies
   implementation 'com.google.android.material:material:1.0.0'
   implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
   implementation 'androidx.appcompat:appcompat:1.1.0'

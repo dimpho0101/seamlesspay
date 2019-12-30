@@ -4,18 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.cybersource.inappsdk.connectors.inapp.InAppSDKApiClient;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import za.co.seamlesspay.ScanCardNoUi.ScanCardNoUi;
-import za.co.seamlesspay.ScanCardNoUi.ScanCardNoUiCallback;
-import za.co.seamlesspay.seamlessemv.model.EmvCard;
+import za.co.seamlesspay.seamlesstap.SeamlessObserver;
+import za.co.seamlesspay.seamlesstap.seamlesstap.Tap;
+import za.co.seamlesspay.seamlesstap.seamlesstapbottomsheet.TapBottomSheet;
+import za.co.seamlesspay.util.seamlessemv.model.EmvCard;
 
 public class MainActivity extends AppCompatActivity {
 
   TextView mButton;
 
-  ScanCardNoUi mScanCardNoUi;
-
+  TapBottomSheet mTap;
 
   private EmvCard mEmvCard;
 
@@ -28,38 +30,38 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
-    mScanCardNoUi = new ScanCardNoUi(this);
+    mTap = new TapBottomSheet(this, getSupportFragmentManager());
     mButton = findViewById(R.id.text);
-    mButton.setOnClickListener(aView -> mScanCardNoUi.mNFCCardReader.enableDispatch());
+    mButton.setOnClickListener(aView -> mTap.mNFCCardReader.enableDispatch());
   }
 
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
 
-    mScanCardNoUi.startReading(new ScanCardNoUiCallback.State() {
+    mTap.startReading(new SeamlessObserver.ResourceStatus() {
       @Override
       public void onSuccess(EmvCard aEmvCard) {
         mEmvCard = aEmvCard;
-        setText();
+        setText(aEmvCard.getCardNumber());
       }
 
       @Override
       public void onError(Throwable aThrowable) {
-
+        setText(aThrowable.getMessage());
       }
-    },intent);
+    }, intent);
 
   }
 
   @Override
   protected void onPause() {
     super.onPause();
-    mScanCardNoUi.stopReading();
+    mTap.stopReading();
   }
 
-  public void setText() {
-    mButton.setText(mEmvCard.getCardNumber());
+  public void setText(String aString) {
+    mButton.setText(aString);
   }
 
 }

@@ -11,8 +11,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.disposables.Disposables;
 import za.co.seamlesspay.databinding.BottomSheetDialogBinding;
-import za.co.seamlesspay.seamlessemv.NFCCardReader;
-import za.co.seamlesspay.seamlessemv.model.EmvCard;
+import za.co.seamlesspay.util.AnimationUtil;
+import za.co.seamlesspay.util.BottomSheetDialogUtil;
+import za.co.seamlesspay.util.CardUtils;
+import za.co.seamlesspay.util.seamlessemv.NFCCardReader;
+import za.co.seamlesspay.util.seamlessemv.model.EmvCard;
 
 public class ScanCardBottomSheetDialog {
 
@@ -53,7 +56,7 @@ public class ScanCardBottomSheetDialog {
 
   public void initSdk() {
     mBottomSheetDialogBinding = DataBindingUtil.setContentView(((Activity) mContext), R.layout.bottom_sheet_dialog);
-    mBottomSheetDialogUtil = new BottomSheetDialogUtil(mContext, mBottomSheetDialogBinding.getRoot());
+    mBottomSheetDialogUtil = new BottomSheetDialogUtil(mBottomSheetDialogBinding.getRoot());
 
     mBottomSheetDialogBinding.cancelButton.setOnClickListener(aView -> {
       mDisposable.dispose();
