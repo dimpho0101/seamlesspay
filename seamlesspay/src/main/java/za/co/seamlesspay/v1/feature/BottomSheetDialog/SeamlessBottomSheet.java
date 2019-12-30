@@ -4,17 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.disposables.Disposables;
 import za.co.seamlesspay.R;
-import za.co.seamlesspay.databinding.BottomSheetDialogBinding;
+import za.co.seamlesspay.databinding.SeamlessBottomSheetLayoutBinding;
 import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
 import za.co.seamlesspay.v1.util.AnimationUtil.AnimationUtil;
 import za.co.seamlesspay.v1.util.BottomSheetDialogFragmentUtil.BottomSheetDialogFragmentUtil;
 import za.co.seamlesspay.v1.util.EmvUtil.NFCCardReader;
 
-import static androidx.databinding.DataBindingUtil.setContentView;
 import static io.reactivex.android.schedulers.AndroidSchedulers.mainThread;
 
 public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
@@ -42,7 +42,7 @@ public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
   /**
    * NfcCardReader
    */
-  public NFCCardReader mNFCCardReader;
+  private NFCCardReader mNFCCardReader;
 
   /**
    * BottomSheetDialogUtil class for showing BottomSheetDialogFragment
@@ -84,10 +84,12 @@ public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
    * Configure the bottomsheetdialog which the user will see
    */
   private void configureViews() {
-    BottomSheetDialogBinding bottomSheetDialogBinding = setContentView(((Activity) mContext), R.layout.bottom_sheet_dialog);
+    SeamlessBottomSheetLayoutBinding bottomSheetDialogBinding = DataBindingUtil.inflate(((Activity) mContext).getLayoutInflater(), R.layout.seamless_bottom_sheet_layout,
+        null, true);
     mBottomSheetDialogFragmentUtil = new BottomSheetDialogFragmentUtil(bottomSheetDialogBinding.getRoot());
     mAnimationUtil.playAnimation(bottomSheetDialogBinding.creditCardInclude.rippleAnimation, "circles.json");
     bottomSheetDialogBinding.cancelButton.setOnClickListener(aView -> stopReading());
+    mBottomSheetDialogFragmentUtil.setCancelable(false);
     mBottomSheetDialogFragmentUtil.show(mFragmentManager, "");
   }
 
@@ -98,7 +100,7 @@ public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
   public void stopReading() {
     mDisposable.dispose();
     mNFCCardReader.disableDispatch();
-    //mBottomSheetDialogUtil.dismiss();
+    mBottomSheetDialogFragmentUtil.dismiss();
   }
 
   /**
@@ -107,8 +109,14 @@ public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
    */
   @Override
   public void startReading(SeamlessObserver.ResourceStatus aResourceStatus, Intent aIntent) {
-    configureViews();
     createInstance(aIntent, aResourceStatus);
   }
 
+  /**
+   * Start Reading for the credit card
+   */
+  public void enableDispatch() {
+    mNFCCardReader.enableDispatch();
+    configureViews();
+  }
 }

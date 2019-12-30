@@ -2,63 +2,40 @@ package io.seamlesspay;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
-import za.co.seamlesspay.v1.feature.BottomSheetDialog.SeamlessBottomSheet;
-import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
+import androidx.databinding.DataBindingUtil;
+import io.seamlesspay.databinding.ActivityMainBinding;
+import io.seamlesspay.examples.BottomSheetTapActivity;
+import io.seamlesspay.examples.DialogTapActivity;
+import io.seamlesspay.examples.TapActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-  TextView mButton;
-
-  SeamlessBottomSheet mTap;
-
-  private EmvCard mEmvCard;
+  /**
+   * DataBinding for this Activity
+   */
+  ActivityMainBinding mBinding;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
   }
 
   @Override
   protected void onStart() {
     super.onStart();
-    mTap = new SeamlessBottomSheet(this, getSupportFragmentManager());
-    mButton = findViewById(R.id.text);
-    mButton.setOnClickListener(aView -> mTap.mNFCCardReader.enableDispatch());
-  }
 
-  @Override
-  protected void onNewIntent(Intent intent) {
-    super.onNewIntent(intent);
+    // This example does not use any UI. OnSuccess it provides you with the necessary information
+    mBinding.noui.setOnClickListener(aView -> startActivity(new Intent(this, TapActivity.class)));
 
-    mTap.startReading(new SeamlessObserver.ResourceStatus() {
-      @Override
-      public void onSuccess(EmvCard aEmvCard) {
-        mEmvCard = aEmvCard;
-        setText(aEmvCard.getCardNumber());
-      }
+    // This example uses a Dialog. OnSuccess it provides you with the necessary information
+    mBinding.dialogui.setOnClickListener(aView -> startActivity(new Intent(this, DialogTapActivity.class)));
 
-      @Override
-      public void onError(Throwable aThrowable) {
-        setText(aThrowable.getMessage());
-      }
-    }, intent);
+    // This example uses a BottomSheetDialogFragment. OnSuccess it provides you with the necessary information
+    mBinding.bottomsheetui.setOnClickListener(aView -> startActivity(new Intent(this, BottomSheetTapActivity.class)));
 
   }
-
-  @Override
-  protected void onPause() {
-    super.onPause();
-    mTap.stopReading();
-  }
-
-  public void setText(String aString) {
-    mButton.setText(aString);
-  }
-
 }

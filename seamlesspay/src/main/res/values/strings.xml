@@ -2,4 +2,20 @@
   <string name="app_name">Seamless Pay</string>
   <string name="error_msg">Error</string>
   <string name="reading_msg">Reading Card</string>
+
+  <string name="card_number">Card Number</string>
+  <string name="card_number_holder">---- / ---- / ---- / ----</string>
+  <string name="exp_date">Exp</string>
+  <string name="exp_date_holder">-- / --</string>
+
+  <string name="instruction_1">Please tap your credit card</string>
+  <string name="instruction_2">on the back of the phone and hold it there for 5 seconds</string>
+
+  <string name="tagline">Powered by Seamless Pay</string>
+  <string name="cancel">"Cancel"</string>
+
+  <string name="content_desc_amex">American Express Accepted</string>
+  <string name="content_desc_mastercard">Mastercard Accepted</string>
+  <string name="content_desc_visa">Visa Accepted</string>
+
 </resources>
