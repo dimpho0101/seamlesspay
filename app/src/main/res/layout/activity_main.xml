@@ -25,32 +25,13 @@
         app:layout_constraintTop_toBottomOf="@id/noui" />
 
     <Button
-        android:id="@+id/dialogui"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tap Card Dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nouidesc" />
-
-    <TextView
-        android:id="@+id/dialoguidesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="If you want to use the inBuilt Dialog option"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialogui" />
-
-    <Button
         android:id="@+id/bottomsheetui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tap Card BottomSheetDialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialoguidesc" />
+        app:layout_constraintTop_toBottomOf="@id/nouidesc" />
 
     <TextView
         android:id="@+id/bottomsheetuidesc"

@@ -85,7 +85,7 @@ public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
    */
   private void configureViews() {
     SeamlessBottomSheetLayoutBinding bottomSheetDialogBinding = DataBindingUtil.inflate(((Activity) mContext).getLayoutInflater(), R.layout.seamless_bottom_sheet_layout,
-        null, true);
+        null, false);
     mBottomSheetDialogFragmentUtil = new BottomSheetDialogFragmentUtil(bottomSheetDialogBinding.getRoot());
     mAnimationUtil.playAnimation(bottomSheetDialogBinding.creditCardInclude.rippleAnimation, "circles.json");
     bottomSheetDialogBinding.cancelButton.setOnClickListener(aView -> stopReading());
