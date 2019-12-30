@@ -4,20 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.cybersource.inappsdk.connectors.inapp.InAppSDKApiClient;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import za.co.seamlesspay.seamlesstap.SeamlessObserver;
-import za.co.seamlesspay.seamlesstap.seamlesstap.Tap;
-import za.co.seamlesspay.seamlesstap.seamlesstapbottomsheet.TapBottomSheet;
-import za.co.seamlesspay.util.seamlessemv.model.EmvCard;
+import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
+import za.co.seamlesspay.v1.feature.BottomSheetDialog.SeamlessBottomSheet;
+import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 
 public class MainActivity extends AppCompatActivity {
 
   TextView mButton;
 
-  TapBottomSheet mTap;
+  SeamlessBottomSheet mTap;
 
   private EmvCard mEmvCard;
 
@@ -30,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
-    mTap = new TapBottomSheet(this, getSupportFragmentManager());
+    mTap = new SeamlessBottomSheet(this, getSupportFragmentManager());
     mButton = findViewById(R.id.text);
     mButton.setOnClickListener(aView -> mTap.mNFCCardReader.enableDispatch());
   }
