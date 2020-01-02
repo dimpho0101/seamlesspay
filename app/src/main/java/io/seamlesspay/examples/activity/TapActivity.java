@@ -1,19 +1,18 @@
-package io.seamlesspay.examples;
+package io.seamlesspay.examples.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import io.seamlesspay.R;
 import io.seamlesspay.databinding.ActivityTapBinding;
-import za.co.seamlesspay.v1.feature.BottomSheetDialog.SeamlessBottomSheet;
+import za.co.seamlesspay.v1.feature.NoUi.SeamlessNoUI;
 import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
 import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 
-public class BottomSheetTapActivity extends AppCompatActivity {
+public class TapActivity extends AppCompatActivity {
 
   /**
    * DataBinding for this activity
@@ -21,9 +20,9 @@ public class BottomSheetTapActivity extends AppCompatActivity {
   private ActivityTapBinding mBinding;
 
   /**
-   * For use if you want to use the inBuilt BottomSheetDialogFragment
+   * For use if you want to create your own UI
    */
-  private SeamlessBottomSheet mTap;
+  private SeamlessNoUI mTap;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,8 +33,8 @@ public class BottomSheetTapActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
-    mTap = new SeamlessBottomSheet(this, getSupportFragmentManager());
-    mBinding.button.setOnClickListener(aView -> mTap.enableDispatch());
+    mTap = new SeamlessNoUI(this);
+    mBinding.button.setOnClickListener(aView -> mTap.mNFCCardReader.enableDispatch());
   }
 
   /**
@@ -59,9 +58,6 @@ public class BottomSheetTapActivity extends AppCompatActivity {
     }, intent);
   }
 
-  /**
-   * Required
-   */
   @Override
   protected void onPause() {
     super.onPause();

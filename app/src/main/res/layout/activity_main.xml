@@ -43,6 +43,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottomsheetui" />
 
+    <Button
+        android:id="@+id/nouifragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use in fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottomsheetuidesc" />
+
+    <TextView
+        android:id="@+id/nouifragmentdesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Fragment Testing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nouifragment" />
+
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

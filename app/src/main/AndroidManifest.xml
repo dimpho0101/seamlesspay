@@ -33,7 +33,7 @@
     <!-- NoUi Example -->
 
     <activity
-        android:name=".examples.TapActivity"
+        android:name=".examples.activity.TapActivity"
         android:launchMode="singleTask">
       <intent-filter>
         <action android:name="android.nfc.action.TECH_DISCOVERED" />
@@ -49,7 +49,7 @@
 
     <!-- BottomSheetDialog Example -->
     <activity
-        android:name=".examples.BottomSheetTapActivity"
+        android:name=".examples.activity.BottomSheetTapActivity"
         android:launchMode="singleTask">
       <intent-filter>
         <action android:name="android.nfc.action.TECH_DISCOVERED" />
@@ -76,7 +76,23 @@
           android:name="android.nfc.action.TECH_DISCOVERED"
           android:resource="@xml/nfc_tech_list" />
     </activity>
+
     <!-- Dialog Example -->
+
+    <activity
+        android:name=".examples.fragment.BottomSheetTapActivity2"
+        android:launchMode="singleTask">
+
+      <intent-filter>
+        <action android:name="android.nfc.action.TECH_DISCOVERED" />
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+
+      <meta-data
+          android:name="android.nfc.action.TECH_DISCOVERED"
+          android:resource="@xml/nfc_tech_list" />
+
+    </activity>
 
 
   </application>

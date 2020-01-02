@@ -41,4 +41,10 @@ public interface SeamlessObserver {
     void startReading(ResourceStatus aResourceStatus, Intent aIntent);
   }
 
+  interface CreateFragmentResource {
+
+    void startReading(ResourceStatus aResourceStatus);
+
+  }
+
 }

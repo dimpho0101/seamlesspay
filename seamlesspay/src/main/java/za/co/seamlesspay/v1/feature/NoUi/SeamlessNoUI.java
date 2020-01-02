@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import io.reactivex.disposables.Disposable;
 import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
+import za.co.seamlesspay.v1.interfaces.SeamlessObserver.CreateResource;
 import za.co.seamlesspay.v1.util.EmvUtil.NFCCardReader;
 
 import static io.reactivex.android.schedulers.AndroidSchedulers.mainThread;
@@ -14,7 +15,7 @@ import static io.reactivex.disposables.Disposables.empty;
 /**
  * Returns an EmvCard object. This class has no UI, it will only return the required information when called
  */
-public class SeamlessNoUI implements SeamlessObserver.CreateResource {
+public class SeamlessNoUI implements CreateResource {
 
   /**
    * NfcCardReader
