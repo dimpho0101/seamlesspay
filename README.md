@@ -1,10 +1,17 @@
-# SeamlessPay for Android
+# Seamless Pay for Android - Beta
 
-## Accept contactless credit/debit cards from VISA, Mastercard, Amex and more on your app
+## Give users the ability to tap their credit card on their phone for a seamless checkout experience using NFC & contactless cards from VISA, Mastercard, Amex and more.
 
 [![](https://jitpack.io/v/seamlesspayio/seamlesspay.svg)](https://jitpack.io/#seamlesspayio/seamlesspay)
 
-SeamlessPay is a mobile library for Android that gives merchants the ability to read contactless cards from VISA, Mastercard, American Express and more through NFC.
+Seamless Pay is a mobile library for Android that gives merchants the ability to read contactless cards from VISA, Mastercard, American Express and more through NFC.
+Seamless Pay is a mobile library for Android which allows developers to capture credit card details by tapping it on the back of a mobile device that has NFC support.
+Seamless Pay supports credit cards from VISA, Mastercard, Amex, Discover and more.
+
+Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+
 
 ## Getting started with the examples
 Please note that we currently have two options in the SDK. You can use our prebuilt UI or you can provide your own UI.
