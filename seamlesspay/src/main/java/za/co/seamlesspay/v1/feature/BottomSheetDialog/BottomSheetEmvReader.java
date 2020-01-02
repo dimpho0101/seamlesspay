@@ -70,11 +70,11 @@ public class BottomSheetEmvReader implements EmvCallback.CreateResource {
           .observeOn(mainThread())
           .subscribe(
               emvCard -> {
-                aResourceStatus.onSuccess(emvCard);
+                aResourceStatus.onSuccess(emvCard, null);
                 stopReading();
               },
               throwable -> {
-                aResourceStatus.onError(throwable);
+                aResourceStatus.onSuccess( null, throwable);
                 stopReading();
               });
     }

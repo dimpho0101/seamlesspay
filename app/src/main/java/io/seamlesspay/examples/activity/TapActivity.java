@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil;
 import io.seamlesspay.R;
 import io.seamlesspay.databinding.ActivityTapBinding;
 import za.co.seamlesspay.v1.feature.NoUi.EmvReader;
-import za.co.seamlesspay.v1.interfaces.EmvCallback;
 import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 
 public class TapActivity extends AppCompatActivity {
@@ -45,17 +44,7 @@ public class TapActivity extends AppCompatActivity {
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
-    mTap.startReading(new EmvCallback.ResourceStatus() {
-      @Override
-      public void onSuccess(EmvCard aEmvCard) {
-        setText(aEmvCard, null);
-      }
-
-      @Override
-      public void onError(Throwable aThrowable) {
-        setText(null, aThrowable);
-      }
-    }, intent);
+    mTap.startReading((aEmvCard, aThrowable) -> setText(aEmvCard, null), intent);
   }
 
   @Override

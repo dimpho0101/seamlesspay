@@ -45,17 +45,7 @@ public class BottomSheetTapActivity extends AppCompatActivity {
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
-    mTap.startReading(new EmvCallback.ResourceStatus() {
-      @Override
-      public void onSuccess(EmvCard aEmvCard) {
-        setText(aEmvCard, null);
-      }
-
-      @Override
-      public void onError(Throwable aThrowable) {
-        setText(null, aThrowable);
-      }
-    }, intent);
+    mTap.startReading((aEmvCard, aThrowable) -> setText(aEmvCard, null), intent);
   }
 
   /**

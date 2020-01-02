@@ -14,10 +14,9 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import io.seamlesspay.R;
 import io.seamlesspay.databinding.FragmentBottomSheetTapBinding;
-import za.co.seamlesspay.v1.viewmodel.ConfigureViewModel;
 import za.co.seamlesspay.v1.feature.NoUi.EmvReader;
 import za.co.seamlesspay.v1.interfaces.EmvCallback;
-import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
+import za.co.seamlesspay.v1.viewmodel.ConfigureViewModel;
 import za.co.seamlesspay.v1.viewmodel.IntentViewModel;
 
 import static java.util.Objects.requireNonNull;
@@ -52,17 +51,7 @@ public class BottomSheetTapFragment extends Fragment {
   }
 
   private void configureOb() {
-    final Observer<Intent> intentObserver = aIntent -> mTap.startReading(new EmvCallback.ResourceStatus() {
-      @Override
-      public void onSuccess(EmvCard aEmvCard) {
-        mBinding.text.setText(aEmvCard.getCardNumber());
-      }
-
-      @Override
-      public void onError(Throwable aThrowable) {
-        mBinding.text.setText(aThrowable.getMessage());
-      }
-    }, aIntent);
+    final Observer<Intent> intentObserver = aIntent -> mTap.startReading((EmvCallback.ResourceStatus) (aEmvCard, aThrowable) -> mBinding.text.setText(aEmvCard.getCardNumber()), aIntent);
     mIntentViewModel.getIntentMutableLiveData().observe((LifecycleOwner) requireNonNull(getContext()), intentObserver);
   }
 

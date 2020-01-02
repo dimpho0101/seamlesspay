@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import za.co.seamlesspay.v1.interfaces.EmvCallback;
 import za.co.seamlesspay.v1.interfaces.EmvCallback.CreateResource;
 import za.co.seamlesspay.v1.util.EmvUtil.NFCCardReader;
+import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 
 import static io.reactivex.android.schedulers.AndroidSchedulers.mainThread;
 import static io.reactivex.disposables.Disposables.empty;
@@ -45,13 +47,19 @@ public class EmvReader implements CreateResource {
           .readCardRx2(aIntent)
           .observeOn(mainThread())
           .subscribe(
-              emvCard -> {
-                aResourceStatus.onSuccess(emvCard);
-                stopReading();
+              new Consumer<EmvCard>() {
+                @Override
+                public void accept(EmvCard emvCard) throws Exception {
+                  aResourceStatus.onSuccess(emvCard);
+                  EmvReader.this.stopReading();
+                }
               },
-              throwable -> {
-                aResourceStatus.onError(throwable);
-                stopReading();
+              new Consumer<Throwable>() {
+                @Override
+                public void accept(Throwable throwable) throws Exception {
+                  aResourceStatus.onError(throwable);
+                  EmvReader.this.stopReading();
+                }
               });
     }
   }

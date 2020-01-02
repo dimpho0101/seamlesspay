@@ -2,6 +2,7 @@ package za.co.seamlesspay.v1.interfaces;
 
 import android.content.Intent;
 
+import androidx.annotation.Nullable;
 import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 
 /**
@@ -21,12 +22,7 @@ public interface EmvCallback {
     /**
      * @param aEmvCard object which contains information about the credit card
      */
-    void onSuccess(EmvCard aEmvCard);
-
-    /**
-     * @param aThrowable which contains the error
-     */
-    void onError(Throwable aThrowable);
+    void onSuccess(@Nullable EmvCard aEmvCard, @Nullable Throwable aThrowable);
   }
 
   /**
