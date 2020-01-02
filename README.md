@@ -14,12 +14,10 @@ SeamlessPay is a mobile library for Android that gives merchants the ability to 
 ### Payment gateway support
 If we have not listed your preferred Payment Gateway, please let us know at hello@seamlesspay.io and we will add it.
 
-- [ ] Integration with Stripe Payments
+- [ ] Integration with Peach Payments
+- [ ] Integration with PayU
 - [ ] Integration with PayFast
 - [ ] Integration with PayGate
-- [ ] Integration with checkout.com
-- [ ] Integration with VISA CyberSource
-- [ ] Integration with MasterPass
 
 ## Setup Seamless Pay
 
