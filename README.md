@@ -9,7 +9,7 @@ SeamlessPay is a mobile library for Android that gives merchants the ability to 
 ## Getting started with the examples
 Please note that we currently have two options in the SDK.
 
-Example Repository Clone Link : https://github.com/seamlesspayio/seamlesspay.git
+Example Repository Clone Link : https://github.com/seamlesspayio/seamlesspay.git </br>
 Example Repository Download Link: https://github.com/seamlesspayio/seamlesspay/archive/master.zip
 
 ### Support
