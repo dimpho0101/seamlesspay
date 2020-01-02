@@ -42,7 +42,9 @@ dependencies {
 ```
 
 ### Step 3
-Please refer to the xml below to setup your manifest file properly
+Please refer to the two xml below. It is very important that you set these up correctly otherwise the library wont work.
+
+#### Step 3.1 - Add an intent filer as well as meta-data to the Activity you want to use the library in. Use the xml below as a reference
 ```xml
     <!-- Example -->
 
@@ -62,6 +64,7 @@ Please refer to the xml below to setup your manifest file properly
      <!-- Example -->
 ```
 
+#### Step 3.2 - Create an xml directory and then an nfc_tech_list.xml file in the res folder of your app. Use the xml below as a reference
 ```xml
     <!-- This the NFC Tech List File -->
 
