@@ -4,4 +4,4 @@
 
 [![](https://jitpack.io/v/seamlesspayio/seamlesspay.svg)](https://jitpack.io/#seamlesspayio/seamlesspay)
 
-Android library which allows people to make payments by tapping their credit card on the back of their phone.
+SeamlessPay is a mobile library for Android that gives merchants the ability to read contactless cards from VISA, Mastercard, American Express and more through NFC.
