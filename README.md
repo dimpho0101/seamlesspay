@@ -21,9 +21,20 @@ If we have not listed your preferred Payment Gateway, please let us know at hell
 - [ ] Integration with VISA CyberSource
 - [ ] Integration with MasterPass
 
-## Download
+## Setup Seamless Pay
 
-Gradle is the only supported build configuration, so just add the dependency to your project `build.gradle` file:
+### Step 1
+
+```gradle
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+### Step 2
 
 ```gradle
 dependencies {
