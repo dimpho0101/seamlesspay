@@ -24,19 +24,40 @@ If we have not listed your preferred Payment Gateway, please let us know at hell
 ## Setup Seamless Pay
 
 ### Step 1
-
+Add the JitPack repository to your build file
 ```groovy
-allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
-	}
+      allprojects {
+          repositories {
+              maven { url 'https://jitpack.io' }
+          }
+      }
 ```
 
 ### Step 2
-
+Add the dependency
 ```groovy
 dependencies {
-	      implementation 'com.github.seamlesspayio:seamlesspay:1.2.2-beta'
+ implementation 'com.github.seamlesspayio:seamlesspay:1.2.2-beta'
 }
+```
+
+### Step 3
+Add this to your manifest on the Activity where you want to use the library
+```xml
+    <!-- NoUi Example -->
+
+        <activity
+            android:name=".examples.activity.TapActivity"
+            android:launchMode="singleTask">
+          <intent-filter>
+            <action android:name="android.nfc.action.TECH_DISCOVERED" />
+            <category android:name="android.intent.category.DEFAULT" />
+          </intent-filter>
+
+          <meta-data
+              android:name="android.nfc.action.TECH_DISCOVERED"
+              android:resource="@xml/nfc_tech_list" />
+        </activity>
+
+     <!-- NoUi Example -->
 ```
