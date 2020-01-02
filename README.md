@@ -25,10 +25,9 @@ If we have not listed your preferred Payment Gateway, please let us know at hell
 
 ### Step 1
 
-```gradle
+```groovy
 allprojects {
 		repositories {
-			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
@@ -36,7 +35,7 @@ allprojects {
 
 ### Step 2
 
-```gradle
+```groovy
 dependencies {
 	      implementation 'com.github.seamlesspayio:seamlesspay:1.2.2-beta'
 }
