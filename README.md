@@ -20,3 +20,13 @@ If we have not listed your preferred Payment Gateway, please let us know at hell
 - [ ] Integration with checkout.com
 - [ ] Integration with VISA CyberSource
 - [ ] Integration with MasterPass
+
+## Download
+
+Gradle is the only supported build configuration, so just add the dependency to your project `build.gradle` file:
+
+```gradle
+dependencies {
+	      implementation 'com.github.seamlesspayio:seamlesspay:1.2.2-beta'
+}
+```
