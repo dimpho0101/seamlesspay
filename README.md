@@ -42,9 +42,9 @@ dependencies {
 ```
 
 ### Step 3
-Add this to your manifest on the Activity where you want to use the library
+Please refer to the xml below to setup your manifest file properly
 ```xml
-    <!-- NoUi Example -->
+    <!-- Example -->
 
         <activity
             android:name=".examples.activity.TapActivity"
@@ -59,5 +59,21 @@ Add this to your manifest on the Activity where you want to use the library
               android:resource="@xml/nfc_tech_list" />
         </activity>
 
-     <!-- NoUi Example -->
+     <!-- Example -->
+```
+
+```xml
+    <!-- This the NFC Tech List File -->
+
+        <?xml version="1.0" encoding="utf-8"?>
+        <resources xmlns:tools="http://schemas.android.com/tools"
+            xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
+            tools:ignore="MissingDefaultResource">
+
+          <tech-list>
+            <tech>android.nfc.tech.IsoDep</tech>
+          </tech-list>
+        </resources>
+
+     <!-- This the NFC Tech List File  -->
 ```
