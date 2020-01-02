@@ -10,14 +10,14 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.disposables.Disposables;
 import za.co.seamlesspay.R;
 import za.co.seamlesspay.databinding.SeamlessBottomSheetLayoutBinding;
-import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
+import za.co.seamlesspay.v1.interfaces.EmvCallback;
 import za.co.seamlesspay.v1.util.AnimationUtil.AnimationUtil;
 import za.co.seamlesspay.v1.util.BottomSheetDialogFragmentUtil.BottomSheetDialogFragmentUtil;
 import za.co.seamlesspay.v1.util.EmvUtil.NFCCardReader;
 
 import static io.reactivex.android.schedulers.AndroidSchedulers.mainThread;
 
-public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
+public class BottomSheetEmvReader implements EmvCallback.CreateResource {
 
   /**
    * Context from calling activity
@@ -53,7 +53,7 @@ public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
   /**
    * Constructor
    */
-  public SeamlessBottomSheet(Context aContext, FragmentManager aFragmentManager) {
+  public BottomSheetEmvReader(Context aContext, FragmentManager aFragmentManager) {
     mContext = aContext;
     mFragmentManager = aFragmentManager;
     mNFCCardReader = new NFCCardReader((Activity) mContext);
@@ -63,7 +63,7 @@ public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
    * @param aIntent         Intent from the calling activity/fragment
    * @param aResourceStatus Status of the resource
    */
-  private void createInstance(Intent aIntent, SeamlessObserver.ResourceStatus aResourceStatus) {
+  private void createInstance(Intent aIntent, EmvCallback.ResourceStatus aResourceStatus) {
     if (mNFCCardReader.isSuitableIntent(aIntent)) {
       mDisposable = mNFCCardReader
           .readCardRx2(aIntent)
@@ -108,7 +108,7 @@ public class SeamlessBottomSheet implements SeamlessObserver.CreateResource {
    * @param aIntent         Intent from the calling activity
    */
   @Override
-  public void startReading(SeamlessObserver.ResourceStatus aResourceStatus, Intent aIntent) {
+  public void startReading(EmvCallback.ResourceStatus aResourceStatus, Intent aIntent) {
     createInstance(aIntent, aResourceStatus);
   }
 

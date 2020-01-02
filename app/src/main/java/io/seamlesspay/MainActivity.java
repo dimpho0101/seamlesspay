@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     // This example uses a BottomSheetDialogFragment. OnSuccess it provides you with the necessary information
     mBinding.bottomsheetui.setOnClickListener(aView -> startActivity(new Intent(this, BottomSheetTapActivity.class)));
 
-    //
+    // This example shows usage on a Fragment
     mBinding.nouifragment.setOnClickListener(aView -> startActivity(new Intent(this, BottomSheetTapActivity2.class)));
 
   }

@@ -2,15 +2,14 @@ package io.seamlesspay.examples.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import io.seamlesspay.R;
 import io.seamlesspay.databinding.ActivityTapBinding;
-import za.co.seamlesspay.v1.feature.BottomSheetDialog.SeamlessBottomSheet;
-import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
+import za.co.seamlesspay.v1.feature.BottomSheetDialog.BottomSheetEmvReader;
+import za.co.seamlesspay.v1.interfaces.EmvCallback;
 import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 
 public class BottomSheetTapActivity extends AppCompatActivity {
@@ -23,7 +22,7 @@ public class BottomSheetTapActivity extends AppCompatActivity {
   /**
    * For use if you want to use the inBuilt BottomSheetDialogFragment
    */
-  private SeamlessBottomSheet mTap;
+  private BottomSheetEmvReader mTap;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class BottomSheetTapActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
-    mTap = new SeamlessBottomSheet(this, getSupportFragmentManager());
+    mTap = new BottomSheetEmvReader(this, getSupportFragmentManager());
     mBinding.button.setOnClickListener(aView -> mTap.enableDispatch());
   }
 
@@ -46,7 +45,7 @@ public class BottomSheetTapActivity extends AppCompatActivity {
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
-    mTap.startReading(new SeamlessObserver.ResourceStatus() {
+    mTap.startReading(new EmvCallback.ResourceStatus() {
       @Override
       public void onSuccess(EmvCard aEmvCard) {
         setText(aEmvCard, null);

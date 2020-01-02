@@ -6,19 +6,19 @@ import android.view.View;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import androidx.annotation.NonNull;
-import za.co.seamlesspay.v1.feature.BottomSheetDialog.SeamlessBottomSheet;
+import za.co.seamlesspay.v1.feature.BottomSheetDialog.BottomSheetEmvReader;
 
 import static android.R.color.transparent;
 
 public class BottomSheetDialogFragmentUtil extends BottomSheetDialogFragment {
 
   /**
-   * View to display from {@link SeamlessBottomSheet}
+   * View to display from {@link BottomSheetEmvReader}
    */
   private View mView;
 
   /**
-   * @param aView View to display from {@link SeamlessBottomSheet}
+   * @param aView View to display from {@link BottomSheetEmvReader}
    */
   public BottomSheetDialogFragmentUtil(View aView) {
     mView = aView;

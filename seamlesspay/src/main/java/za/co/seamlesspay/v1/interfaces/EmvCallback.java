@@ -7,7 +7,7 @@ import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 /**
  * Interface
  */
-public interface SeamlessObserver {
+public interface EmvCallback {
 
   /**
    * Tells us the status of the resource. If the user successfully
@@ -39,12 +39,6 @@ public interface SeamlessObserver {
      * @param aIntent         Intent from the calling activity
      */
     void startReading(ResourceStatus aResourceStatus, Intent aIntent);
-  }
-
-  interface CreateFragmentResource {
-
-    void startReading(ResourceStatus aResourceStatus);
-
   }
 
 }

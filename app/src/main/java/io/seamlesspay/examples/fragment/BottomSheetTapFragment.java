@@ -14,11 +14,11 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import io.seamlesspay.R;
 import io.seamlesspay.databinding.FragmentBottomSheetTapBinding;
-import za.co.seamlesspay.v1.feature.ConfigureViewModel;
-import za.co.seamlesspay.v1.feature.NoUi.SeamlessNoUI;
-import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
+import za.co.seamlesspay.v1.viewmodel.ConfigureViewModel;
+import za.co.seamlesspay.v1.feature.NoUi.EmvReader;
+import za.co.seamlesspay.v1.interfaces.EmvCallback;
 import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
-import za.co.seamlesspay.v1.viewmodel.SeamlessViewModel;
+import za.co.seamlesspay.v1.viewmodel.IntentViewModel;
 
 import static java.util.Objects.requireNonNull;
 
@@ -26,9 +26,9 @@ public class BottomSheetTapFragment extends Fragment {
 
   private FragmentBottomSheetTapBinding mBinding;
 
-  private SeamlessViewModel mSeamlessViewModel;
+  private IntentViewModel mIntentViewModel;
 
-  private SeamlessNoUI mTap;
+  private EmvReader mTap;
 
   @Nullable
   @Override
@@ -46,13 +46,13 @@ public class BottomSheetTapFragment extends Fragment {
   @Override
   public void onStart() {
     super.onStart();
-    mSeamlessViewModel = new ConfigureViewModel(getContext()).createViewModel();
-    mTap = new SeamlessNoUI(getContext());
+    mIntentViewModel = new ConfigureViewModel(getContext()).createViewModel();
+    mTap = new EmvReader(getContext());
     configureOb();
   }
 
   private void configureOb() {
-    final Observer<Intent> intentObserver = aIntent -> mTap.startReading(new SeamlessObserver.ResourceStatus() {
+    final Observer<Intent> intentObserver = aIntent -> mTap.startReading(new EmvCallback.ResourceStatus() {
       @Override
       public void onSuccess(EmvCard aEmvCard) {
         mBinding.text.setText(aEmvCard.getCardNumber());
@@ -63,7 +63,7 @@ public class BottomSheetTapFragment extends Fragment {
         mBinding.text.setText(aThrowable.getMessage());
       }
     }, aIntent);
-    mSeamlessViewModel.getIntentMutableLiveData().observe((LifecycleOwner) requireNonNull(getContext()), intentObserver);
+    mIntentViewModel.getIntentMutableLiveData().observe((LifecycleOwner) requireNonNull(getContext()), intentObserver);
   }
 
   @Override

@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel;
 /**
  *
  */
-public class SeamlessViewModel extends ViewModel {
+public class IntentViewModel extends ViewModel {
 
   /**
    *

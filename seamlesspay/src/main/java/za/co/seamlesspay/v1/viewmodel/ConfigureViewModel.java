@@ -1,18 +1,17 @@
-package za.co.seamlesspay.v1.feature;
+package za.co.seamlesspay.v1.viewmodel;
 
 import android.content.Context;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
-import za.co.seamlesspay.v1.viewmodel.SeamlessViewModel;
 
 /**
- * Returns an EmvCard object. This class has no UI, it will only return the required information when called
+ * Class to configure the ViewModel
  */
 public class ConfigureViewModel {
 
   /**
-   * Dispose the resource, the operation should be idempotent.
+   * Context Context from the calling activity/fragment
    */
   private Context mContext;
 
@@ -26,8 +25,8 @@ public class ConfigureViewModel {
   /**
    * @return ViewModel
    */
-  public SeamlessViewModel createViewModel() {
-    return ViewModelProviders.of((FragmentActivity) mContext).get(SeamlessViewModel.class);
+  public IntentViewModel createViewModel() {
+    return ViewModelProviders.of((FragmentActivity) mContext).get(IntentViewModel.class);
   }
 
 }

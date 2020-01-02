@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import io.seamlesspay.R;
 import io.seamlesspay.databinding.ActivityTapBinding;
-import za.co.seamlesspay.v1.feature.NoUi.SeamlessNoUI;
-import za.co.seamlesspay.v1.interfaces.SeamlessObserver;
+import za.co.seamlesspay.v1.feature.NoUi.EmvReader;
+import za.co.seamlesspay.v1.interfaces.EmvCallback;
 import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 
 public class TapActivity extends AppCompatActivity {
@@ -22,7 +22,7 @@ public class TapActivity extends AppCompatActivity {
   /**
    * For use if you want to create your own UI
    */
-  private SeamlessNoUI mTap;
+  private EmvReader mTap;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class TapActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
-    mTap = new SeamlessNoUI(this);
+    mTap = new EmvReader(this);
     mBinding.button.setOnClickListener(aView -> mTap.mNFCCardReader.enableDispatch());
   }
 
@@ -45,7 +45,7 @@ public class TapActivity extends AppCompatActivity {
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
-    mTap.startReading(new SeamlessObserver.ResourceStatus() {
+    mTap.startReading(new EmvCallback.ResourceStatus() {
       @Override
       public void onSuccess(EmvCard aEmvCard) {
         setText(aEmvCard, null);
