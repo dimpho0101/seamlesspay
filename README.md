@@ -8,9 +8,9 @@ Seamless Pay is a mobile library for Android that gives merchants the ability to
 Seamless Pay is a mobile library for Android which allows developers to capture credit card details by tapping it on the back of a mobile device that has NFC support.
 Seamless Pay supports credit cards from VISA, Mastercard, Amex, Discover and more.
 
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
+SupportedCards | Name
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+Seconds | 301
 
 
 ## Getting started with the examples
