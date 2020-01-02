@@ -8,16 +8,8 @@ SeamlessPay is a mobile library for Android that gives merchants the ability to 
 
 ### Support
 
-- [x] Add contactless support for activities
+- [x] Add contactless support for Activities
 - [x] Add contactless support for Fragments
-
-### Payment gateway support
-If we have not listed your preferred Payment Gateway, please let us know at hello@seamlesspay.io and we will add it.
-
-- [ ] Integration with Peach Payments
-- [ ] Integration with PayU
-- [ ] Integration with PayFast
-- [ ] Integration with PayGate
 
 ## Setup Seamless Pay
 
