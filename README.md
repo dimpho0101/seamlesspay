@@ -42,7 +42,7 @@ dependencies {
 ```
 
 ### Step 3
-Please refer to the two xml below. It is very important that you set these up correctly otherwise the library wont work.
+Please refer to the two xml files below. It is very important that you set these up correctly otherwise the library wont work.
 
 #### Step 3.1 - Add an intent filer as well as meta-data to the Activity you want to use the library in. Use the xml below as a reference
 ```xml
