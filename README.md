@@ -6,10 +6,16 @@
 
 SeamlessPay is a mobile library for Android that gives merchants the ability to read contactless cards from VISA, Mastercard, American Express and more through NFC.
 
+## Getting started with the examples
+Please note that we currently have two options in the SDK.
+
+Example Repository Clone Link : https://github.com/seamlesspayio/seamlesspay.git
+Example Repository Download Link: https://github.com/seamlesspayio/seamlesspay/archive/master.zip
+
 ### Support
 
-- [x] Add contactless support for Activities
-- [x] Add contactless support for Fragments
+- [x] Added contactless support for Activities
+- [x] Added contactless support for Fragments
 
 ## Setup Seamless Pay
 

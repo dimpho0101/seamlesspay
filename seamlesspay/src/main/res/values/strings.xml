@@ -9,7 +9,7 @@
   <string name="exp_date_holder">-- / --</string>
 
   <string name="instruction_1">Please tap your credit card</string>
-  <string name="instruction_2">on the back of the phone and hold it there for 5 seconds</string>
+  <string name="instruction_2">on the back of the phone and hold it there for 3 seconds</string>
 
   <string name="tagline">Powered by Seamless Pay</string>
   <string name="cancel">"Cancel"</string>
