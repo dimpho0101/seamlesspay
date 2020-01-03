@@ -54,6 +54,10 @@ ext {
   materialVersion = '1.0.0' // https://material.io/
 
   cyberSourceVersion = '+' // https://developer.visa.com/
+
+  daggerVersion = '2.23.2'
+
+  daggerCompilerVersion = '2.23.2'
 }
 
 
@@ -84,6 +88,9 @@ dependencies {
 
   // Lottie for displaying animations
   implementation "com.airbnb.android:lottie:$lottieVersion"
+
+  implementation "com.google.dagger:dagger:$daggerVersion"
+  annotationProcessor "com.google.dagger:dagger-compiler:$daggerCompilerVersion"
 
   testImplementation 'junit:junit:4.12'
   androidTestImplementation 'androidx.test.ext:junit:1.1.1'

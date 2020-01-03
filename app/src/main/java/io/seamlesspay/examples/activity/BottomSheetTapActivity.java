@@ -54,7 +54,9 @@ public class BottomSheetTapActivity extends AppCompatActivity {
   @Override
   protected void onPause() {
     super.onPause();
-    mTap.stopReading();
+    if (mTap != null) {
+      mTap.stopReading();
+    }
   }
 
   /**

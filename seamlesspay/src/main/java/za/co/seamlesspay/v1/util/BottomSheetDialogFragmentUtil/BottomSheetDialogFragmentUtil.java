@@ -1,5 +1,6 @@
 package za.co.seamlesspay.v1.util.BottomSheetDialogFragmentUtil;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.view.View;
 
@@ -28,6 +29,7 @@ public class BottomSheetDialogFragmentUtil extends BottomSheetDialogFragment {
    * @param dialog Dialog to show
    * @param style  style of the dialog
    */
+  @SuppressLint("RestrictedApi")
   @Override
   public void setupDialog(@NonNull Dialog dialog, int style) {
     super.setupDialog(dialog, style);

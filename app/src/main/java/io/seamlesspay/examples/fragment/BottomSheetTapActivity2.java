@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import io.seamlesspay.R;
 import io.seamlesspay.databinding.Activity2BottomSheetTapBinding;
+import za.co.seamlesspay.v1.feature.BottomSheetDialog.BottomSheetEmvReader;
 import za.co.seamlesspay.v1.viewmodel.ConfigureViewModel;
-import za.co.seamlesspay.v1.feature.NoUi.EmvReader;
 import za.co.seamlesspay.v1.viewmodel.IntentViewModel;
 
 public class BottomSheetTapActivity2 extends AppCompatActivity {
@@ -18,7 +18,7 @@ public class BottomSheetTapActivity2 extends AppCompatActivity {
 
   IntentViewModel mViewModel;
 
-  private EmvReader mTap;
+  private BottomSheetEmvReader mTap;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class BottomSheetTapActivity2 extends AppCompatActivity {
   }
 
   public void startReading() {
-    mTap = new EmvReader(this);
-    mTap.mNFCCardReader.enableDispatch();
+    mTap = new BottomSheetEmvReader(this, getSupportFragmentManager());
+    mTap.enableDispatch();
   }
 
   @Override
@@ -41,6 +41,8 @@ public class BottomSheetTapActivity2 extends AppCompatActivity {
   @Override
   protected void onPause() {
     super.onPause();
-    mTap.stopReading();
+    if (mTap != null) {
+      mTap.stopReading();
+    }
   }
 }

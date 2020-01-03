@@ -47,7 +47,6 @@ public class BottomSheetEmvReader implements EmvCallback.CreateResource {
   /**
    * BottomSheetDialogUtil class for showing BottomSheetDialogFragment
    */
-  @SuppressWarnings("FieldCanBeLocal")
   private BottomSheetDialogFragmentUtil mBottomSheetDialogFragmentUtil;
 
   /**
@@ -60,23 +59,22 @@ public class BottomSheetEmvReader implements EmvCallback.CreateResource {
   }
 
   /**
-   * @param aIntent         Intent from the calling activity/fragment
-   * @param aResourceStatus Status of the resource
+   * Start Reading for the credit card
    */
-  private void createInstance(Intent aIntent, EmvCallback.ResourceStatus aResourceStatus) {
-    if (mNFCCardReader.isSuitableIntent(aIntent)) {
-      mDisposable = mNFCCardReader
-          .readCardRx2(aIntent)
-          .observeOn(mainThread())
-          .subscribe(
-              emvCard -> {
-                aResourceStatus.onSuccess(emvCard, null);
-                stopReading();
-              },
-              throwable -> {
-                aResourceStatus.onSuccess( null, throwable);
-                stopReading();
-              });
+  public void enableDispatch() {
+    mNFCCardReader.enableDispatch();
+    configureViews();
+  }
+
+  /**
+   * Stops reading for the credit card
+   */
+  @SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
+  public void stopReading() {
+    mDisposable.dispose();
+    mNFCCardReader.disableDispatch();
+    if (mBottomSheetDialogFragmentUtil != null) {
+      mBottomSheetDialogFragmentUtil.dismiss();
     }
   }
 
@@ -94,29 +92,24 @@ public class BottomSheetEmvReader implements EmvCallback.CreateResource {
   }
 
   /**
-   * Stops reading for the credit card
-   */
-  @SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
-  public void stopReading() {
-    mDisposable.dispose();
-    mNFCCardReader.disableDispatch();
-    mBottomSheetDialogFragmentUtil.dismiss();
-  }
-
-  /**
    * @param aResourceStatus Status of the resource
    * @param aIntent         Intent from the calling activity
    */
   @Override
   public void startReading(EmvCallback.ResourceStatus aResourceStatus, Intent aIntent) {
-    createInstance(aIntent, aResourceStatus);
-  }
-
-  /**
-   * Start Reading for the credit card
-   */
-  public void enableDispatch() {
-    mNFCCardReader.enableDispatch();
-    configureViews();
+    if (mNFCCardReader.isSuitableIntent(aIntent)) {
+      mDisposable = mNFCCardReader
+          .readCardRx2(aIntent)
+          .observeOn(mainThread())
+          .subscribe(
+              emvCard -> {
+                aResourceStatus.onSuccess(emvCard, null);
+                stopReading();
+              },
+              throwable -> {
+                aResourceStatus.onSuccess(null, throwable);
+                stopReading();
+              });
+    }
   }
 }

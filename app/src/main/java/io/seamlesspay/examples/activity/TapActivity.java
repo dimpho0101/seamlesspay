@@ -50,7 +50,9 @@ public class TapActivity extends AppCompatActivity {
   @Override
   protected void onPause() {
     super.onPause();
-    mTap.stopReading();
+    if (mTap != null) {
+      mTap.stopReading();
+    }
   }
 
   /**

@@ -14,7 +14,7 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import io.seamlesspay.R;
 import io.seamlesspay.databinding.FragmentBottomSheetTapBinding;
-import za.co.seamlesspay.v1.feature.NoUi.EmvReader;
+import za.co.seamlesspay.v1.feature.BottomSheetDialog.BottomSheetEmvReader;
 import za.co.seamlesspay.v1.interfaces.EmvCallback;
 import za.co.seamlesspay.v1.viewmodel.ConfigureViewModel;
 import za.co.seamlesspay.v1.viewmodel.IntentViewModel;
@@ -27,7 +27,7 @@ public class BottomSheetTapFragment extends Fragment {
 
   private IntentViewModel mIntentViewModel;
 
-  private EmvReader mTap;
+  private BottomSheetEmvReader mTap;
 
   @Nullable
   @Override
@@ -46,7 +46,7 @@ public class BottomSheetTapFragment extends Fragment {
   public void onStart() {
     super.onStart();
     mIntentViewModel = new ConfigureViewModel(getContext()).createViewModel();
-    mTap = new EmvReader(getContext());
+    mTap = new BottomSheetEmvReader(getContext(), getFragmentManager());
     configureOb();
   }
 
