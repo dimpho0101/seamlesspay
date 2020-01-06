@@ -13,11 +13,6 @@ import za.co.seamlesspay.v1.util.EmvUtil.log.LoggerFactory;
 
 /**
  * Class to manage bit with java
- *
- * <p>Copied from com.github.devnied:bit-lib4j:1.4.12</p>
- * 
- * @author Millau Julien
- * 
  */
 public final class BitUtils {
 	/***

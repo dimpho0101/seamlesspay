@@ -17,9 +17,6 @@ package za.co.seamlesspay.v1.util.EmvUtil.enums;
 
 /**
  * Enum which define all EMV apdu
- * 
- * @author MILLAU Julien
- * 
  */
 public enum CommandEnum {
 

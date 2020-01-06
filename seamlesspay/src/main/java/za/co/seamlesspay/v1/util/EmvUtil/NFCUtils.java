@@ -12,8 +12,6 @@ import android.nfc.tech.IsoDep;
  * 
  * Utils class used to manager NFC Adapter
  * 
- * @author MILLAU julien
- * 
  */
 public class NFCUtils {
 

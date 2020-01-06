@@ -5,11 +5,6 @@ import java.util.Locale;
 
 /**
  * Class used to manage String/byte/int converter
- *
- * <p>Copied from com.github.devnied:bit-lib4j:1.4.12</p>
- *
- * @author Millau Julien
- * 
  */
 public final class BytesUtils {
 
