@@ -43,7 +43,7 @@ Add the JitPack repository to your build file
 Add the dependency
 ```groovy
 dependencies {
- implementation 'com.github.seamlesspayio:seamlesspay:1.2.2-beta'
+ implementation 'com.github.seamlesspayio:seamlesspay:1.2.4-beta'
 }
 ```
 
