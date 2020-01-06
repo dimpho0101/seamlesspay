@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 /**
- * Class to configure the ViewModel
+ * Configure the ViewModel
  */
 public class ConfigureViewModel {
 
