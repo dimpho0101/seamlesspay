@@ -49,6 +49,8 @@ public class BottomSheetEmvReader implements EmvCallback.CreateResource {
    */
   private BottomSheetDialogFragmentUtil mBottomSheetDialogFragmentUtil;
 
+  private static String JSON_ANIMATION = "circles.json";
+
   /**
    * Constructor
    */
@@ -69,7 +71,6 @@ public class BottomSheetEmvReader implements EmvCallback.CreateResource {
   /**
    * Stops reading for the credit card
    */
-  @SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
   public void stopReading() {
     mDisposable.dispose();
     mNFCCardReader.disableDispatch();
@@ -85,7 +86,7 @@ public class BottomSheetEmvReader implements EmvCallback.CreateResource {
     SeamlessBottomSheetLayoutBinding bottomSheetDialogBinding = DataBindingUtil.inflate(((Activity) mContext).getLayoutInflater(), R.layout.seamless_bottom_sheet_layout,
         null, false);
     mBottomSheetDialogFragmentUtil = new BottomSheetDialogFragmentUtil(bottomSheetDialogBinding.getRoot());
-    mAnimationUtil.playAnimation(bottomSheetDialogBinding.creditCardInclude.rippleAnimation, "circles.json");
+    mAnimationUtil.playAnimation(bottomSheetDialogBinding.creditCardInclude.rippleAnimation, JSON_ANIMATION);
     bottomSheetDialogBinding.cancelButton.setOnClickListener(aView -> stopReading());
     mBottomSheetDialogFragmentUtil.setCancelable(false);
     mBottomSheetDialogFragmentUtil.show(mFragmentManager, "");
