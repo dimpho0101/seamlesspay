@@ -50,13 +50,22 @@ dependencies {
 ## Now the code
 ### On Your on start method
 ```Java
+private BottomSheetEmvReaderV2 mEmvReaderV2;
+
+private EmvViewModel mModelV;
+
 @Override
-  protected void onStart() {
-    super.onStart();
-    configureReader();
-    // Start reading for your card
-    if (SDK_INT >= KITKAT) {
-      mBinding.button.setOnClickListener(aView -> startReading());
-    }
-  }
+ protected void onStart() {
+   super.onStart();
+   configureReader();
+   // Start reading for your card
+   if (SDK_INT >= KITKAT) {
+     mBinding.button.setOnClickListener(aView -> startReading());
+   }
+ }
+  
+public void configureReader() {
+  mModelV = new ConfigureViewModel(this).createViewModel();
+  mEmvReaderV2 = new BottomSheetEmvReaderV2(this, getSupportFragmentManager());
+}
 ```
