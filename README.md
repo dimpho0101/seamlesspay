@@ -1,5 +1,5 @@
 # Seamless Pay for Android - Beta
-
+# Please note that I have released Version 2 of the library. It is much simpler to integrate, check it out.
 ## Give users the ability to tap their credit card on their phone for a seamless checkout experience using NFC & contactless cards from VISA, Mastercard, Amex and more.
 
 [![](https://jitpack.io/v/seamlesspayio/seamlesspay.svg)](https://jitpack.io/#seamlesspayio/seamlesspay)
@@ -43,46 +43,59 @@ Add the JitPack repository to your build file
 Add the dependency
 ```groovy
 dependencies {
- implementation 'com.github.seamlesspayio:seamlesspay:1.2.2-beta'
+ implementation 'com.github.seamlesspayio:seamlesspay:1.2.4-beta'
 }
 ```
 
-### Step 3
-Please refer to the two xml files below. It is very important that you set these up correctly otherwise the library wont work.
+## Now the code
+### Follow this example to get started or download the sample app for more
+```Java
+public class BottomSheetTapActivityV2 extends AppCompatActivity {
 
-#### Step 3.1 - Add an intent filer as well as meta-data to the Activity you want to use the library in. Use the xml below as a reference
-```xml
-    <!-- Example -->
+  private ActivityTapBinding mBinding;
 
-        <activity
-            android:name=".examples.activity.TapActivity"
-            android:launchMode="singleTask">
-          <intent-filter>
-            <action android:name="android.nfc.action.TECH_DISCOVERED" />
-            <category android:name="android.intent.category.DEFAULT" />
-          </intent-filter>
+  private BottomSheetEmvReaderV2 mEmvReaderV2;
 
-          <meta-data
-              android:name="android.nfc.action.TECH_DISCOVERED"
-              android:resource="@xml/nfc_tech_list" />
-        </activity>
+  private EmvViewModel mModelV;
 
-     <!-- Example -->
-```
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    mBinding = DataBindingUtil.setContentView(this, R.layout.activity_tap);
+  }
 
-#### Step 3.2 - Create an xml directory and then an nfc_tech_list.xml file in the res folder of your app. Use the xml below as a reference
-```xml
-    <!-- This the NFC Tech List File -->
+  @Override
+  protected void onStart() {
+    super.onStart();
+    configureReader();
+    // Start reading for your card
+    if (SDK_INT >= KITKAT) {
+      mBinding.button.setOnClickListener(aView -> startReading());
+    }
+  }
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <resources xmlns:tools="http://schemas.android.com/tools"
-            xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
-            tools:ignore="MissingDefaultResource">
+  @Override
+  protected void onStop() {
+    super.onStop();
+    // Stop reading for the card
+    mEmvReaderV2.stopReading();
+  }
 
-          <tech-list>
-            <tech>android.nfc.tech.IsoDep</tech>
-          </tech-list>
-        </resources>
+  private void startReading() {
+    final Observer<EmvCard> cardObserver = aS -> {
+      if (aS != null)
+        mBinding.text.setText(aS.getCardNumber());
+    };
+    mModelV.getIntentMutableLiveData().observe(this, cardObserver);
+    if (SDK_INT >= KITKAT) {
+      mEmvReaderV2.readCreditCard();
+    }
+  }
 
-     <!-- This the NFC Tech List File  -->
+  public void configureReader() {
+    mModelV = new ConfigureViewModel(this).createViewModel();
+    mEmvReaderV2 = new BottomSheetEmvReaderV2(this, getSupportFragmentManager());
+  }
+
+}
 ```
