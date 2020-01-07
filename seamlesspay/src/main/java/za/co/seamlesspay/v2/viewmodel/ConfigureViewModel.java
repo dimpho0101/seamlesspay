@@ -1,4 +1,4 @@
-package za.co.seamlesspay.v1.viewmodel;
+package za.co.seamlesspay.v2.viewmodel;
 
 import android.content.Context;
 
@@ -25,8 +25,8 @@ public class ConfigureViewModel {
   /**
    * @return ViewModel
    */
-  public IntentViewModel createViewModel() {
-    return ViewModelProviders.of((FragmentActivity) mContext).get(IntentViewModel.class);
+  public EmvViewModel createViewModel() {
+    return ViewModelProviders.of((FragmentActivity) mContext).get(EmvViewModel.class);
   }
 
 }

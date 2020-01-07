@@ -1,24 +1,25 @@
-package za.co.seamlesspay.v1.viewmodel;
+package za.co.seamlesspay.v2.viewmodel;
 
 import android.content.Intent;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
 
 /**
  *
  */
-public class IntentViewModel extends ViewModel {
+public class EmvViewModel extends ViewModel {
 
   /**
    *
    */
-  private MutableLiveData<Intent> mIntentMutableLiveData;
+  private MutableLiveData<EmvCard> mIntentMutableLiveData;
 
   /**
-   * @return
+   * @return EmvCard object
    */
-  public MutableLiveData<Intent> getIntentMutableLiveData() {
+  public MutableLiveData<EmvCard> getIntentMutableLiveData() {
     if (mIntentMutableLiveData == null) {
       mIntentMutableLiveData = new MutableLiveData<>();
     }

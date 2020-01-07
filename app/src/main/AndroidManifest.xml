@@ -30,70 +30,7 @@
 
     </activity>
 
-    <!-- NoUi Example -->
-
-    <activity
-        android:name=".examples.activity.TapActivity"
-        android:launchMode="singleTask">
-      <intent-filter>
-        <action android:name="android.nfc.action.TECH_DISCOVERED" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-
-      <meta-data
-          android:name="android.nfc.action.TECH_DISCOVERED"
-          android:resource="@xml/nfc_tech_list" />
-    </activity>
-    <!-- NoUi Example -->
-
-
-    <!-- BottomSheetDialog Example -->
-    <activity
-        android:name=".examples.activity.BottomSheetTapActivity"
-        android:launchMode="singleTask">
-      <intent-filter>
-        <action android:name="android.nfc.action.TECH_DISCOVERED" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-
-      <meta-data
-          android:name="android.nfc.action.TECH_DISCOVERED"
-          android:resource="@xml/nfc_tech_list" />
-    </activity>
-    <!-- BottomSheetDialog Example -->
-
-
-    <!-- Dialog Example -->
-    <activity
-        android:name=".examples.DialogTapActivity"
-        android:launchMode="singleTask">
-      <intent-filter>
-        <action android:name="android.nfc.action.TECH_DISCOVERED" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-
-      <meta-data
-          android:name="android.nfc.action.TECH_DISCOVERED"
-          android:resource="@xml/nfc_tech_list" />
-    </activity>
-
-    <!-- Dialog Example -->
-
-    <activity
-        android:name=".examples.fragment.BottomSheetTapActivity2"
-        android:launchMode="singleTask">
-
-      <intent-filter>
-        <action android:name="android.nfc.action.TECH_DISCOVERED" />
-        <category android:name="android.intent.category.DEFAULT" />
-      </intent-filter>
-
-      <meta-data
-          android:name="android.nfc.action.TECH_DISCOVERED"
-          android:resource="@xml/nfc_tech_list" />
-
-    </activity>
-
+    <activity android:name=".v2.BottomSheetTapActivityV2" />
 
   </application>
 </manifest>

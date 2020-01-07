@@ -1,6 +1,7 @@
 package za.co.seamlesspay.v1.interfaces;
 
 import android.content.Intent;
+import android.nfc.Tag;
 
 import androidx.annotation.Nullable;
 import za.co.seamlesspay.v1.util.EmvUtil.model.EmvCard;
@@ -35,6 +36,18 @@ public interface EmvCallback {
      * @param aIntent         Intent from the calling activity
      */
     void startReading(ResourceStatus aResourceStatus, Intent aIntent);
+  }
+
+  /**
+   * Creates a resource to start reading the credit card.
+   */
+  interface CreateResourceV2 {
+
+    /**
+     * @param aResourceStatus Status of the resource
+     * @param aTag            NFC Tag from the calling activity
+     */
+    void startReading(ResourceStatus aResourceStatus, Tag aTag);
   }
 
 }

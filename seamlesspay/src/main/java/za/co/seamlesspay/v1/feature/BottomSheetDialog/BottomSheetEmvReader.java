@@ -17,6 +17,8 @@ import za.co.seamlesspay.v1.util.EmvUtil.NFCCardReader;
 
 import static io.reactivex.android.schedulers.AndroidSchedulers.mainThread;
 
+@SuppressWarnings("DeprecatedIsStillUsed")
+@Deprecated
 public class BottomSheetEmvReader implements EmvCallback.CreateResource {
 
   /**
@@ -86,7 +88,7 @@ public class BottomSheetEmvReader implements EmvCallback.CreateResource {
     SeamlessBottomSheetLayoutBinding bottomSheetDialogBinding = DataBindingUtil.inflate(((Activity) mContext).getLayoutInflater(), R.layout.seamless_bottom_sheet_layout,
         null, false);
     mBottomSheetDialogFragmentUtil = new BottomSheetDialogFragmentUtil(bottomSheetDialogBinding.getRoot());
-    mAnimationUtil.playAnimation(bottomSheetDialogBinding.creditCardInclude.rippleAnimation, JSON_ANIMATION);
+    //mAnimationUtil.playAnimation(bottomSheetDialogBinding.creditCardInclude.rippleAnimation, JSON_ANIMATION);
     bottomSheetDialogBinding.cancelButton.setOnClickListener(aView -> stopReading());
     mBottomSheetDialogFragmentUtil.setCancelable(false);
     mBottomSheetDialogFragmentUtil.show(mFragmentManager, "");

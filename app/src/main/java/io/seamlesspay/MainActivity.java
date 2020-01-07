@@ -7,9 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import io.seamlesspay.databinding.ActivityMainBinding;
-import io.seamlesspay.examples.activity.BottomSheetTapActivity;
-import io.seamlesspay.examples.activity.TapActivity;
-import io.seamlesspay.examples.fragment.BottomSheetTapActivity2;
+import io.seamlesspay.v2.BottomSheetTapActivityV2;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,14 +26,8 @@ public class MainActivity extends AppCompatActivity {
   protected void onStart() {
     super.onStart();
 
-    // This example does not use any UI. OnSuccess it provides you with the necessary information
-    mBinding.noui.setOnClickListener(aView -> startActivity(new Intent(this, TapActivity.class)));
-
-    // This example uses a BottomSheetDialogFragment. OnSuccess it provides you with the necessary information
-    mBinding.bottomsheetui.setOnClickListener(aView -> startActivity(new Intent(this, BottomSheetTapActivity.class)));
-
     // This example shows usage on a Fragment
-    mBinding.nouifragment.setOnClickListener(aView -> startActivity(new Intent(this, BottomSheetTapActivity2.class)));
+    mBinding.nouifragment.setOnClickListener(aView -> startActivity(new Intent(this, BottomSheetTapActivityV2.class)));
 
   }
 
