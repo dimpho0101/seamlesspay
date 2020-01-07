@@ -46,3 +46,17 @@ dependencies {
  implementation 'com.github.seamlesspayio:seamlesspay:1.2.4-beta'
 }
 ```
+
+## Now the code
+### On Your on start method
+```Java
+@Override
+  protected void onStart() {
+    super.onStart();
+    configureReader();
+    // Start reading for your card
+    if (SDK_INT >= KITKAT) {
+      mBinding.button.setOnClickListener(aView -> startReading());
+    }
+  }
+```
