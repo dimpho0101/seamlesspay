@@ -48,24 +48,54 @@ dependencies {
 ```
 
 ## Now the code
-### On Your on start method
+### Follow this example to get started or download the sample app for more
 ```Java
-private BottomSheetEmvReaderV2 mEmvReaderV2;
+public class BottomSheetTapActivityV2 extends AppCompatActivity {
 
-private EmvViewModel mModelV;
+  private ActivityTapBinding mBinding;
 
-@Override
- protected void onStart() {
-   super.onStart();
-   configureReader();
-   // Start reading for your card
-   if (SDK_INT >= KITKAT) {
-     mBinding.button.setOnClickListener(aView -> startReading());
-   }
- }
-  
-public void configureReader() {
-  mModelV = new ConfigureViewModel(this).createViewModel();
-  mEmvReaderV2 = new BottomSheetEmvReaderV2(this, getSupportFragmentManager());
+  private BottomSheetEmvReaderV2 mEmvReaderV2;
+
+  private EmvViewModel mModelV;
+
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    mBinding = DataBindingUtil.setContentView(this, R.layout.activity_tap);
+  }
+
+  @Override
+  protected void onStart() {
+    super.onStart();
+    configureReader();
+    // Start reading for your card
+    if (SDK_INT >= KITKAT) {
+      mBinding.button.setOnClickListener(aView -> startReading());
+    }
+  }
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    // Stop reading for the card
+    mEmvReaderV2.stopReading();
+  }
+
+  private void startReading() {
+    final Observer<EmvCard> cardObserver = aS -> {
+      if (aS != null)
+        mBinding.text.setText(aS.getCardNumber());
+    };
+    mModelV.getIntentMutableLiveData().observe(this, cardObserver);
+    if (SDK_INT >= KITKAT) {
+      mEmvReaderV2.readCreditCard();
+    }
+  }
+
+  public void configureReader() {
+    mModelV = new ConfigureViewModel(this).createViewModel();
+    mEmvReaderV2 = new BottomSheetEmvReaderV2(this, getSupportFragmentManager());
+  }
+
 }
 ```
